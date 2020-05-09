@@ -36,7 +36,7 @@
                          HeightRequest="150">
                 </BoxView>
                 <Image Grid.Column="0" 
-                       Source="home.svg"
+                       Source="login.png"
                        HorizontalOptions="Center"
                        WidthRequest="70"/>
             </StackLayout>
