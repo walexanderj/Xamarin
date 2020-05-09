@@ -6,24 +6,32 @@
              mc:Ignorable="d"
              x:Class="CedeSistemasApp.MainPage">
 
+    <ContentPage.Content>
+        <Grid BackgroundColor="DarkRed" HeightRequest="500" WidthRequest="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Image BackgroundColor="Black" WidthRequest="180" HeightRequest="120" Grid.Row="1" Grid.Column="1" Source="icon.png"/>
+            <Label Text="Iniciar con otro usuario" HorizontalTextAlignment="End" Grid.Row="3" Grid.Column="1" TextColor="White" FontAttributes="Italic"/>
+            <Entry Grid.Row="4" Grid.Column="1" Placeholder="Correo Electrónico" TextColor="DarkRed" BackgroundColor="White"   />
+            <Entry Grid.Row="5" Grid.Column="1" Placeholder="Contraseña" TextColor="DarkRed" BackgroundColor="White" IsPassword="True"/>
+            <Label Text="Registrarme"  Grid.Row="6" Grid.Column="1" TextColor="White" FontAttributes="Italic"/>
+            <Button Text="Ingresar" TextColor="White" BackgroundColor="Salmon"  Grid.Row="8" Grid.Column="1"/>
+        </Grid>
+    </ContentPage.Content>
 
-    <Grid BackgroundColor="Black" HeightRequest="500" WidthRequest="300">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Image Source="icon.png" Grid.Row="1" Grid.Column="1"/>
-        <Entry Grid.Row="3" Grid.Column="1" Placeholder="User" />
-        <Entry Grid.Row="5" Grid.Column="1" Placeholder="Password"/>
-    </Grid>
 </ContentPage>
