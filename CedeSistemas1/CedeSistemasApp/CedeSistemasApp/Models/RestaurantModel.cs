@@ -22,6 +22,6 @@ namespace CedeSistemasApp.Models
 
         public Decimal Longitud { get; set; }
 
-
+        public int Calificacion { get; set; }
     }
 }

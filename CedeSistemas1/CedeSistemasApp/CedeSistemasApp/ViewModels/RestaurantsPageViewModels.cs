@@ -7,25 +7,33 @@ using System.Text;
 
 namespace CedeSistemasApp.ViewModels
 {
-    public class RestaurantsPageViewModels
+    public class RestaurantsPageViewModels:BaseViewModel
     {
+        private bool _IsRefreshing;
+        public bool IsRefreshing {
+            get { return _IsRefreshing; }
+            set { _IsRefreshing = value;
+                OnPropertyChanged("IsRefreshing");
+            } 
+        }
+
         public ObservableCollection<RestaurantModel> Restaurantes { get; set; }
 
         public RestaurantsPageViewModels()
         {
             Restaurantes = new ObservableCollection<RestaurantModel>();
-            LoadRestaurantas();
+            LoadRestaurantes();
         }
 
-        async private void LoadRestaurantas()
+        async private void LoadRestaurantes()
         {
 
-
+            IsRefreshing = true;
            foreach (var item in await new RestaurantRepository().GetRestaurants())
             {
                 Restaurantes.Add(item);
             }
-
+            IsRefreshing = false;
         }
     }
 }

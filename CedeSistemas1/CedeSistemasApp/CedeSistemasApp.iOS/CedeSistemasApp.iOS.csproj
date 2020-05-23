@@ -133,4 +133,19 @@
       <Name>CedeSistemasApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drawable-hdpi\FB_IMG_15381330065636778.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drawable-mdpi\FB_IMG_15381330065636778.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drawable-xhdpi\FB_IMG_15381330065636778.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drawable-xxhdpi\FB_IMG_15381330065636778.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\drawable-xxxhdpi\FB_IMG_15381330065636778.jpg" />
+  </ItemGroup>
 </Project>

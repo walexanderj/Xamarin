@@ -7,20 +7,32 @@
              BackgroundColor="{StaticResource gris_color_claro}"
              x:Class="CedeSistemasApp.Views.RestaurantsPage">
     <Grid>
-        <ListView ItemsSource="{Binding Restaurantes}" HasUnevenRows="True" CachingStrategy="RetainElement">
+        <ListView x:Name="grd_restaurants" 
+                  IsRefreshing="{Binding IsRefreshing}"
+                  ItemsSource="{Binding Restaurantes}" 
+                  HasUnevenRows="True" 
+                  CachingStrategy="RetainElement" 
+                  SeparatorVisibility="None"
+                  ItemSelected="grd_restaurants_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame HasShadow="False" Margin="5" BorderColor="LightGray" >
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="130"/>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Nombre}" FontSize="Subtitle" />
-                                    <Label Text="{Binding Direccion}" FontSize="Micro" TextColor="Gray"/>
-                                    <Label Text="{Binding Telefono}" FontSize="Small"/>
+                        <Grid BackgroundColor="{StaticResource gris_color_claro}">
+                            <Frame HasShadow="False" Margin="5" BorderColor="LightGray" CornerRadius="10" >
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="130" Aspect="AspectFill"/>
+
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Nombre}" FontSize="Subtitle" />
+                                        <Label Text="{Binding Direccion}" FontSize="Micro" TextColor="Gray"/>
+                                        <Label Text="{Binding Telefono}" FontSize="Small"/>
+                                        <Image Source="{Binding Calificacion,Converter={StaticResource CalificationToImage}}" />
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </Frame>
+                            </Frame>
+                        </Grid>
+
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
