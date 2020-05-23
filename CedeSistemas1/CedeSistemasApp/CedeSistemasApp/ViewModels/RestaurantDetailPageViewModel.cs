@@ -1,14 +1,20 @@
-﻿using CedeSistemasApp.Models;
+﻿using CedeSistemasApp.Interfaces;
+using CedeSistemasApp.Models;
 using CedeSistemasApp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace CedeSistemasApp.ViewModels
 {
     public class RestaurantDetailPageViewModel: BaseViewModel
     {
+        public ICommand OpenUrlCommand { get; set; }
+        public ICommand PhoneCallCommand { get; set; }
         private bool _IsRefreshing;
         public bool IsRefreshing
         {
@@ -24,10 +30,19 @@ namespace CedeSistemasApp.ViewModels
 
         public RestaurantDetailPageViewModel(RestaurantModel item)
         {
+            OpenUrlCommand = new Command(OpenUrl);
+            PhoneCallCommand = new Command(PhoneCall);
             this.Item = item;
             Productos = new ObservableCollection<ProductoModel>();
             LoadProductos(item.Id);
         }
+
+        private void PhoneCall(object obj)
+        {
+            var deviceService = DependencyService.Get<IDeviceService>();
+            deviceService.PlacePhoneCall(obj.ToString());
+        }
+
         async private void LoadProductos(Guid idRestaurante)
         {
 
@@ -38,6 +53,11 @@ namespace CedeSistemasApp.ViewModels
                 Productos.Add(itemProduct);
             }
             IsRefreshing = false;
+        }
+        private void OpenUrl(Object url)
+        {
+            var deviceService = DependencyService.Get<IDeviceService>();
+            deviceService.OpenBrowser(url.ToString());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CedeSistemasApp.Models;
+using CedeSistemasApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,16 @@ namespace CedeSistemasApp.Views
             BindingContext = restaurantDetailPageViewModel;
         }
 
+        async private void btn_Map_Clicked(object sender, EventArgs e)
+        {
+            var vm = (RestaurantDetailPageViewModel)BindingContext;
+            await Navigation.PushModalAsync(
+                new MapPage(
+                    vm.Item.Nombre,
+                    vm.Item.Direccion,
+                    vm.Item.Latitud,
+                    vm.Item.Longitud
+                    ));
+        }
     }
 }

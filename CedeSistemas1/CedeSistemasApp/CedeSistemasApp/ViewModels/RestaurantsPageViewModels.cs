@@ -1,9 +1,11 @@
-﻿using CedeSistemasApp.Models;
+﻿using CedeSistemasApp.Interfaces;
+using CedeSistemasApp.Models;
 using CedeSistemasApp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace CedeSistemasApp.ViewModels
 {
@@ -27,13 +29,16 @@ namespace CedeSistemasApp.ViewModels
 
         async private void LoadRestaurantes()
         {
-
-            IsRefreshing = true;
-           foreach (var item in await new RestaurantRepository().GetRestaurants())
+            var deviceService = DependencyService.Get<IDeviceService>();
+            if (deviceService.CheckConnectivity())
             {
-                Restaurantes.Add(item);
+                IsRefreshing = true;
+                foreach (var item in await new RestaurantRepository().GetRestaurants())
+                {
+                    Restaurantes.Add(item);
+                }
+                IsRefreshing = false;
             }
-            IsRefreshing = false;
         }
     }
 }

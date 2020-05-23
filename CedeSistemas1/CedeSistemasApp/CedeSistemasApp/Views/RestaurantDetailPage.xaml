@@ -9,23 +9,36 @@
     <ContentPage.Content>
         <Grid >
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image Source="{Binding Item.Imagen}" Aspect="AspectFill" Grid.Row="0"/>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-                <Frame HasShadow="False" Margin="5" BorderColor="LightGray" CornerRadius="10" Grid.Row="1" BackgroundColor="Black" Opacity="80" >
+                <Frame HasShadow="False" Margin="5" BorderColor="LightGray" CornerRadius="10" Grid.Row="1" BackgroundColor="Transparent" Opacity="80" >
                     <StackLayout  >
                         <Label Text="{Binding Item.Nombre}" FontSize="Subtitle" FontAttributes="Bold" TextColor="White"/>
-                        <Label Text="{Binding Item.Direccion}" FontSize="Micro" TextColor="White"/>
+                        <Button x:Name="btn_Map" Clicked="btn_Map_Clicked" BackgroundColor="Transparent" Text="{Binding Item.Direccion}" FontSize="Micro" TextColor="White"/>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Item.Telefono}"  FontSize="Small" TextColor="White"/>
-                            <Label Text=" - "/>
-                            <Label Text="{Binding Item.SitioWeb}" FontSize="Small" TextColor="White" />
+                            <Button 
+                                Text="{Binding Item.Telefono}"  
+                                Command="{Binding PhoneCallCommand}"
+                                CommandParameter="{Binding Item.Telefono}"
+                                FontSize="Small" 
+                                TextColor="White"/>
+                            <Button  
+                                     Command="{Binding OpenUrlCommand}"
+                                     CommandParameter="{Binding Item.SitioWeb}"
+                                     Grid.Column="1"
+                                     Text="Ir al sitio web" 
+                                     HorizontalOptions="End"
+                                     FontSize="Small" 
+                                     TextColor="Gray" 
+                                     FontAttributes="Bold"
+                                     BackgroundColor="White" />
                         </StackLayout>
                    </StackLayout>
                 </Frame>
